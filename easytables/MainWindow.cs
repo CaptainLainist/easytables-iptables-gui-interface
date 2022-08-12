@@ -37,7 +37,15 @@ public partial class MainWindow : Gtk.Window
         var font_littletitle = Font("Verdana", 12);
         label_gen.ModifyFont(font_littletitle);
         title_rules.ModifyFont(font_littletitle);
+        label_STATES.ModifyFont(font_littletitle);
         titlelbl.ModifyFont(font_title);
+
+
+        //anyadir interfaces de red
+        NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
+        foreach (NetworkInterface adapter in adapters) {
+            comboboxentry_interfaces.AppendText(adapter.Name);
+        }
 
     }
 
@@ -110,24 +118,10 @@ public partial class MainWindow : Gtk.Window
         ShowMessage(this, "Alert Box", "Bash script generated in: " + file_path);
     }
 
-    //al añadir regla
-    protected void OnButtonRulesClicked(object sender, EventArgs e)
-    {
+    //get strings for command
+    private string getSourceIp(string sip) {
 
-        //pillar strings
-        string direction = comboboxentry_direction.ActiveText;
-        string filter = comboboxentry_filter.ActiveText;
-        string protocol = comboboxentry_protocol.ActiveText;
-        string sip = text_sip.Text;
-        string sport = entry_sport.Text;
-        string dip = entry_dip.Text;
-        string dport = entry_dport.Text;
-
-        //string ip/port
         string temp_sip;
-        string temp_dip;
-        string temp_sport;
-        string temp_dport;
 
         if (checkbutton_sip.Active)
         {
@@ -138,13 +132,30 @@ public partial class MainWindow : Gtk.Window
             temp_sip = "";
         }
 
+        return temp_sip;
+    }
+
+    private string getSourcePort(string sport)
+    {
+
+        string temp_sport;
+
         if (checkbutton_sport.Active)
         {
             temp_sport = "--sport " + sport;
-        } else 
+        }
+        else
         {
             temp_sport = "";
         }
+
+        return temp_sport;
+    }
+
+    private string getDestinationIp(string dip)
+    {
+
+        string temp_dip;
 
         if (checkbutton_dip.Active)
         {
@@ -155,6 +166,14 @@ public partial class MainWindow : Gtk.Window
             temp_dip = "";
         }
 
+        return temp_dip;
+    }
+
+    private string getDestinationPort(string dport)
+    {
+
+        string temp_dport;
+
         if (checkbutton_dport.Active)
         {
             temp_dport = "--dport " + dport;
@@ -164,31 +183,107 @@ public partial class MainWindow : Gtk.Window
             temp_dport = "";
         }
 
+        return temp_dport;
+    }
+
+
+    private string getMultiport() {
+
+        string temp_multiport = "";
+
+        if (checkbutton_multiport.Active) {
+            temp_multiport = "--match multiport";
+        }
+
+        return temp_multiport;
+    }
+
+    private string getStates() {
+        string temp_states = "";
+
+
+        if (checkbutton_NEW.Active || checkbutton_INVALID.Active || checkbutton_ESTABLISHED.Active || checkbutton_RELATED.Active) {
+            temp_states = "-m conntrack --ctstate ";
+            if (checkbutton_NEW.Active) { 
+                temp_states += "NEW,";
+            }
+            if (checkbutton_INVALID.Active)
+            {
+                temp_states += "INVALID,";
+            }
+            if (checkbutton_ESTABLISHED.Active)
+            {
+                temp_states += "ESTABLISHED,";
+            }
+            if (checkbutton_RELATED.Active) {
+                temp_states += "RELATED,";
+            }
+
+            //cutting the last coma
+            temp_states = temp_states.Substring(0, temp_states.Length - 1);
+
+        }
+
+        return temp_states;
+    
+    }
+
+
+    //al anyadir regla
+    protected void OnButtonRulesClicked(object sender, EventArgs e)
+    {
+
+        //pillar strings
+        string direction = comboboxentry_direction.ActiveText;
+        string filter = comboboxentry_filter.ActiveText;
+        string protocol = comboboxentry_protocol.ActiveText.ToLower();
+        string sip = text_sip.Text;
+        string sport = entry_sport.Text;
+        string dip = entry_dip.Text;
+        string dport = entry_dport.Text;
+
+        //string ip/port
+        string temp_sip = getSourceIp(sip);
+        string temp_dip = getDestinationIp(dip);
+        string temp_sport = getSourcePort(sport);
+        string temp_dport = getDestinationPort(dport);
+
+
+        //string otras cosas
+        string temp_multiport = getMultiport();
+        string temp_states = getStates();
+       
+
+
+       
+
+
+
 
         //add rules
         if (protocol.Equals("icmp")) {
 
 
             if (direction.Equals("INPUT")) {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_sip + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_sip + " -j " + filter);
             } else if (direction.Equals("OUTPUT")) {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_dip + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " -j " + filter);
             } else {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_dip + " " + temp_sip + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sip + " -j " + filter);
             }
 
         } else {
             if (direction.Equals("INPUT"))
             {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_sip + " " + temp_dport + " -j " + filter);
             }
             else if (direction.Equals("OUTPUT"))
             {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_dip + " " + temp_sport + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " -j " + filter);
             }
             else
             {
-                rules.Add("sudo iptables -A " + direction + " -p " + protocol + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
             }
         }
 

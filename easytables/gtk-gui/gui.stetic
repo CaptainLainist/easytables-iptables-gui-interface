@@ -5,7 +5,7 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Release/easytables.exe" internal="true" />
+    <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="864 655">
     <property name="MemberName" />
@@ -153,20 +153,6 @@ FORWARD</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Button" id="button_rules">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Add rule</property>
-            <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnButtonRulesClicked" />
-          </widget>
-          <packing>
-            <property name="X">365</property>
-            <property name="Y">446</property>
-          </packing>
-        </child>
-        <child>
           <placeholder />
         </child>
         <child>
@@ -230,118 +216,14 @@ REJECT</property>
           <widget class="Gtk.ComboBoxEntry" id="comboboxentry_protocol">
             <property name="MemberName" />
             <property name="IsTextCombo">True</property>
-            <property name="Items">tcp
-udp
-icmp</property>
+            <property name="Items">TCP
+UDP
+ICMP</property>
             <property name="Active">0</property>
           </widget>
           <packing>
             <property name="X">43</property>
             <property name="Y">297</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="text_sip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
-          </widget>
-          <packing>
-            <property name="X">275</property>
-            <property name="Y">240</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_sip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">source ip</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">280</property>
-            <property name="Y">211</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_sport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">source port</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">280</property>
-            <property name="Y">161</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="entry_sport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
-          </widget>
-          <packing>
-            <property name="X">275</property>
-            <property name="Y">184</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_dport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">destination port</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">280</property>
-            <property name="Y">277</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="entry_dport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
-          </widget>
-          <packing>
-            <property name="X">275</property>
-            <property name="Y">303</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_dip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">destination ip</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">280</property>
-            <property name="Y">341</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="entry_dip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
-          </widget>
-          <packing>
-            <property name="X">275</property>
-            <property name="Y">370</property>
           </packing>
         </child>
         <child>
@@ -357,6 +239,229 @@ icmp</property>
           <packing>
             <property name="X">542</property>
             <property name="Y">187</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_rules">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Add rule</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnButtonRulesClicked" />
+          </widget>
+          <packing>
+            <property name="X">543</property>
+            <property name="Y">577</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_sip">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">source ip</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">490</property>
+            <property name="Y">236</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="text_sip">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">469</property>
+            <property name="Y">263</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_dport">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">destination port</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">291</property>
+            <property name="Y">236</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry_dport">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">277</property>
+            <property name="Y">263</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_sport">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">source port</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">291</property>
+            <property name="Y">298</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry_sport">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">277</property>
+            <property name="Y">325</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_dip">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">destination ip</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">490</property>
+            <property name="Y">298</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry_dip">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">469</property>
+            <property name="Y">328</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_multiport">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">multiport</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">293</property>
+            <property name="Y">196</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_NEW">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">NEW</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">37</property>
+            <property name="Y">373</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_ESTABLISHED">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">ESTABLISHED</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">37</property>
+            <property name="Y">394</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_RELATED">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">RELATED</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">37</property>
+            <property name="Y">415</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_INVALID">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">INVALID</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">37</property>
+            <property name="Y">434</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label_STATES">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">STATES</property>
+          </widget>
+          <packing>
+            <property name="X">38</property>
+            <property name="Y">351</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ComboBoxEntry" id="comboboxentry_interfaces">
+            <property name="MemberName" />
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes" />
+          </widget>
+          <packing>
+            <property name="X">29</property>
+            <property name="Y">509</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_interface">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">INTERFACES</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">43</property>
+            <property name="Y">468</property>
           </packing>
         </child>
       </widget>
