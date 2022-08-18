@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{1225F0FE-C23D-4220-A955-984811B7A719}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="easytables/MainWindow.cs">
+    <Files>
+      <File FileName="easytables/MainWindow.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="easytables" expanded="True">
+            <Node name="easytables" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.easytables PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

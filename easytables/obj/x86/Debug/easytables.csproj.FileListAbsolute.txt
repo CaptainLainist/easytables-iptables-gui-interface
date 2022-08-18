@@ -4,3 +4,9 @@
 /DATOS/easytables/easytables/easytables/easytables/obj/x86/Debug/easytables.csproj.CoreCompileInputs.cache
 /DATOS/easytables/easytables/easytables/easytables/obj/x86/Debug/easytables.exe
 /DATOS/easytables/easytables/easytables/easytables/obj/x86/Debug/easytables.pdb
+/DATOS/easytables_gh/easytables/easytables/bin/Debug/easytables.exe
+/DATOS/easytables_gh/easytables/easytables/bin/Debug/easytables.pdb
+/DATOS/easytables_gh/easytables/easytables/obj/x86/Debug/easytables.csproj.AssemblyReference.cache
+/DATOS/easytables_gh/easytables/easytables/obj/x86/Debug/easytables.csproj.CoreCompileInputs.cache
+/DATOS/easytables_gh/easytables/easytables/obj/x86/Debug/easytables.exe
+/DATOS/easytables_gh/easytables/easytables/obj/x86/Debug/easytables.pdb
