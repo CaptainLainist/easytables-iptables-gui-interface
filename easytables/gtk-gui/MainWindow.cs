@@ -73,7 +73,7 @@ public partial class MainWindow
 
 	private global::Gtk.ComboBoxEntry comboboxentry_interfaces;
 
-	private global::Gtk.CheckButton checkbutton_interface;
+	private global::Gtk.ComboBoxEntry comboboxentry_interface_output;
 
 	protected virtual void Build()
 	{
@@ -417,22 +417,20 @@ public partial class MainWindow
 		w33.Y = 351;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.comboboxentry_interfaces = global::Gtk.ComboBoxEntry.NewText();
+		this.comboboxentry_interfaces.AppendText(global::Mono.Unix.Catalog.GetString("none"));
 		this.comboboxentry_interfaces.Name = "comboboxentry_interfaces";
 		this.fixed1.Add(this.comboboxentry_interfaces);
 		global::Gtk.Fixed.FixedChild w34 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interfaces]));
 		w34.X = 29;
 		w34.Y = 509;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.checkbutton_interface = new global::Gtk.CheckButton();
-		this.checkbutton_interface.CanFocus = true;
-		this.checkbutton_interface.Name = "checkbutton_interface";
-		this.checkbutton_interface.Label = global::Mono.Unix.Catalog.GetString("INTERFACES");
-		this.checkbutton_interface.DrawIndicator = true;
-		this.checkbutton_interface.UseUnderline = true;
-		this.fixed1.Add(this.checkbutton_interface);
-		global::Gtk.Fixed.FixedChild w35 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_interface]));
-		w35.X = 43;
-		w35.Y = 468;
+		this.comboboxentry_interface_output = global::Gtk.ComboBoxEntry.NewText();
+		this.comboboxentry_interface_output.AppendText(global::Mono.Unix.Catalog.GetString("none"));
+		this.comboboxentry_interface_output.Name = "comboboxentry_interface_output";
+		this.fixed1.Add(this.comboboxentry_interface_output);
+		global::Gtk.Fixed.FixedChild w35 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interface_output]));
+		w35.X = 271;
+		w35.Y = 509;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{

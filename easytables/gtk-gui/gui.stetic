@@ -4,7 +4,6 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="864 655">
@@ -443,7 +442,7 @@ ICMP</property>
           <widget class="Gtk.ComboBoxEntry" id="comboboxentry_interfaces">
             <property name="MemberName" />
             <property name="IsTextCombo">True</property>
-            <property name="Items" translatable="yes" />
+            <property name="Items">none</property>
           </widget>
           <packing>
             <property name="X">29</property>
@@ -451,17 +450,34 @@ ICMP</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_interface">
+          <widget class="Gtk.ComboBoxEntry" id="comboboxentry_interface_output">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">INTERFACES</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes">none</property>
           </widget>
           <packing>
-            <property name="X">43</property>
-            <property name="Y">468</property>
+            <property name="X">271</property>
+            <property name="Y">509</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label1">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">INPUT INTERFACE</property>
+          </widget>
+          <packing>
+            <property name="X">40</property>
+            <property name="Y">478</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label4">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">OUTPUT INTERFACE</property>
+          </widget>
+          <packing>
+            <property name="X">282</property>
+            <property name="Y">478</property>
           </packing>
         </child>
       </widget>

@@ -45,6 +45,7 @@ public partial class MainWindow : Gtk.Window
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
         foreach (NetworkInterface adapter in adapters) {
             comboboxentry_interfaces.AppendText(adapter.Name);
+            comboboxentry_interface_output.AppendText(adapter.Name);
         }
 
     }
@@ -89,8 +90,13 @@ public partial class MainWindow : Gtk.Window
         string user_folder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         string file_path = user_folder + "/easytables.sh";
 
-        //write general rules on first file
+        //make it bash
         File.WriteAllText(file_path, "#/bin/sh" + Environment.NewLine);
+
+        //flush anterior rules
+        File.AppendAllText(file_path, "sudo iptables -F" + Environment.NewLine);
+
+        //write general rules on first file
         File.AppendAllText(file_path, "sudo iptables -P INPUT " + input_base + Environment.NewLine);
         File.AppendAllText(file_path, "sudo iptables -P OUTPUT " + output_base + Environment.NewLine);
         File.AppendAllText(file_path, "sudo iptables -P FORWARD " + forward_base + Environment.NewLine);
@@ -187,6 +193,40 @@ public partial class MainWindow : Gtk.Window
     }
 
 
+    private string getInputInterface() {
+
+        string cadena = "";
+        string interficie = comboboxentry_interfaces.ActiveText;
+
+            if (!interficie.Equals("none")){
+
+            cadena = "-i " + interficie;
+
+            }
+        
+
+        return cadena;
+
+    }
+
+    private string getOutputInterface()
+    {
+
+        string cadena = "";
+        string interficie = comboboxentry_interface_output.ActiveText;
+
+        if (!interficie.Equals("none"))
+        {
+
+            cadena = "-o " + interficie;
+
+        }
+
+
+        return cadena;
+
+    }
+
     private string getMultiport() {
 
         string temp_multiport = "";
@@ -233,6 +273,7 @@ public partial class MainWindow : Gtk.Window
     protected void OnButtonRulesClicked(object sender, EventArgs e)
     {
 
+
         //pillar strings
         string direction = comboboxentry_direction.ActiveText;
         string filter = comboboxentry_filter.ActiveText;
@@ -252,42 +293,49 @@ public partial class MainWindow : Gtk.Window
         //string otras cosas
         string temp_multiport = getMultiport();
         string temp_states = getStates();
-       
+
+        //string interfaces
+        string input_interface = getInputInterface();
+        string output_interface = getOutputInterface();
 
 
-       
-
-
-
-
-        //add rules
-        if (protocol.Equals("icmp")) {
-
-
-            if (direction.Equals("INPUT")) {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_sip + " -j " + filter);
-            } else if (direction.Equals("OUTPUT")) {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " -j " + filter);
-            } else {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sip + " -j " + filter);
-            }
-
-        } else {
-            if (direction.Equals("INPUT"))
+            //add rules
+            if (protocol.Equals("icmp"))
             {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_sip + " " + temp_dport + " -j " + filter);
-            }
-            else if (direction.Equals("OUTPUT"))
-            {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " -j " + filter);
+
+
+                if (direction.Equals("INPUT"))
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + temp_sip + " -j " + filter);
+                }
+                else if (direction.Equals("OUTPUT"))
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + output_interface + " " + temp_multiport + " " + temp_dip + " -j " + filter);
+                }
+                else
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + temp_dip + " " + temp_sip + " -j " + filter);
+                }
+
             }
             else
             {
-                rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                if (direction.Equals("INPUT"))
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                }
+                else if (direction.Equals("OUTPUT"))
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + output_interface + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " -j " + filter);
+                }
+                else
+                {
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                }
             }
-        }
 
-        ShowMessage(this, "Alert Box", "Rule Added");
-            
+            ShowMessage(this, "Alert Box", "Rule Added");
+
+
     }
 }
