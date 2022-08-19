@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{1225F0FE-C23D-4220-A955-984811B7A719}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="easytables/MainWindow.cs">
     <Files>
-      <File FileName="easytables/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="easytables/MainWindow.cs" Line="319" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,6 +12,9 @@
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
