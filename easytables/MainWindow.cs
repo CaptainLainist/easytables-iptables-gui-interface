@@ -95,6 +95,7 @@ public partial class MainWindow : Gtk.Window
 
         //flush anterior rules
         File.AppendAllText(file_path, "sudo iptables -F" + Environment.NewLine);
+        File.AppendAllText(file_path, "sudo iptables --delete-chain" + Environment.NewLine);
 
         //write general rules on first file
         File.AppendAllText(file_path, "sudo iptables -P INPUT " + input_base + Environment.NewLine);
@@ -335,6 +336,56 @@ public partial class MainWindow : Gtk.Window
             }
 
             ShowMessage(this, "Alert Box", "Rule Added");
+
+
+    }
+
+    //al anyadir NAT
+    protected void OnButtonNATClicked(object sender, EventArgs e)
+    {
+
+        NetworkInterface[] adaptadores = NetworkInterface.GetAllNetworkInterfaces();
+
+        string private_interface = "";
+        string public_interface = "";
+
+        if (!comboboxentry_interfaces.ActiveText.Equals("none") && !comboboxentry_interface_output.ActiveText.Equals("none"))
+        {
+
+            foreach (NetworkInterface ni in adaptadores)
+            {
+                //pillar interface privada y ip
+                if (ni.Name.Equals(comboboxentry_interfaces.ActiveText))
+                {
+                    private_interface = ni.Name;
+
+                }
+
+                //pillar interface publica y ip
+                if (ni.Name.Equals(comboboxentry_interface_output.ActiveText))
+                {
+                    public_interface = ni.Name;
+
+                }
+
+            }
+
+
+
+            rules.Add("sudo echo 1 > /proc/sys/net/ipv4/ip_forward ");
+            rules.Add("sudo iptables -t nat -F");
+            rules.Add("sudo iptables -t nat --delete-chain");
+            rules.Add("sudo iptables --table nat --append POSTROUTING --out-interface " + public_interface + " -j MASQUERADE");
+            rules.Add("sudo iptables --append FORWARD --in-interface " + private_interface + " -j ACCEPT");
+            rules.Add("sudo echo 1 > /proc/sys/net/ipv4/ip_forward");
+
+            ShowMessage(this, "Alert Box", "NAT rule added");
+        } else {
+
+            ShowMessage(this, "Alert Box", "Error: Select the two interfaces");
+        
+        }
+
 
 
     }

@@ -75,6 +75,12 @@ public partial class MainWindow
 
 	private global::Gtk.ComboBoxEntry comboboxentry_interface_output;
 
+	private global::Gtk.Label label1;
+
+	private global::Gtk.Label label4;
+
+	private global::Gtk.Button button_NAT;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -419,6 +425,7 @@ public partial class MainWindow
 		this.comboboxentry_interfaces = global::Gtk.ComboBoxEntry.NewText();
 		this.comboboxentry_interfaces.AppendText(global::Mono.Unix.Catalog.GetString("none"));
 		this.comboboxentry_interfaces.Name = "comboboxentry_interfaces";
+		this.comboboxentry_interfaces.Active = 0;
 		this.fixed1.Add(this.comboboxentry_interfaces);
 		global::Gtk.Fixed.FixedChild w34 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interfaces]));
 		w34.X = 29;
@@ -427,10 +434,37 @@ public partial class MainWindow
 		this.comboboxentry_interface_output = global::Gtk.ComboBoxEntry.NewText();
 		this.comboboxentry_interface_output.AppendText(global::Mono.Unix.Catalog.GetString("none"));
 		this.comboboxentry_interface_output.Name = "comboboxentry_interface_output";
+		this.comboboxentry_interface_output.Active = 0;
 		this.fixed1.Add(this.comboboxentry_interface_output);
 		global::Gtk.Fixed.FixedChild w35 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interface_output]));
 		w35.X = 271;
 		w35.Y = 509;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label1 = new global::Gtk.Label();
+		this.label1.Name = "label1";
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("INPUT/PRIVATE INTERFACE");
+		this.fixed1.Add(this.label1);
+		global::Gtk.Fixed.FixedChild w36 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label1]));
+		w36.X = 40;
+		w36.Y = 478;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label4 = new global::Gtk.Label();
+		this.label4.Name = "label4";
+		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("PUBLIC/OUTPUT INTERFACE");
+		this.fixed1.Add(this.label4);
+		global::Gtk.Fixed.FixedChild w37 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label4]));
+		w37.X = 282;
+		w37.Y = 478;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.button_NAT = new global::Gtk.Button();
+		this.button_NAT.CanFocus = true;
+		this.button_NAT.Name = "button_NAT";
+		this.button_NAT.UseUnderline = true;
+		this.button_NAT.Label = global::Mono.Unix.Catalog.GetString("Add NAT rule");
+		this.fixed1.Add(this.button_NAT);
+		global::Gtk.Fixed.FixedChild w38 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_NAT]));
+		w38.X = 61;
+		w38.Y = 574;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
@@ -442,5 +476,6 @@ public partial class MainWindow
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.genbutton.Clicked += new global::System.EventHandler(this.OnGenbuttonClicked);
 		this.button_rules.Clicked += new global::System.EventHandler(this.OnButtonRulesClicked);
+		this.button_NAT.Clicked += new global::System.EventHandler(this.OnButtonNATClicked);
 	}
 }

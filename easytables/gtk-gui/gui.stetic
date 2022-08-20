@@ -443,6 +443,7 @@ ICMP</property>
             <property name="MemberName" />
             <property name="IsTextCombo">True</property>
             <property name="Items">none</property>
+            <property name="Active">0</property>
           </widget>
           <packing>
             <property name="X">29</property>
@@ -454,6 +455,7 @@ ICMP</property>
             <property name="MemberName" />
             <property name="IsTextCombo">True</property>
             <property name="Items" translatable="yes">none</property>
+            <property name="Active">0</property>
           </widget>
           <packing>
             <property name="X">271</property>
@@ -463,7 +465,7 @@ ICMP</property>
         <child>
           <widget class="Gtk.Label" id="label1">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">INPUT INTERFACE</property>
+            <property name="LabelProp" translatable="yes">INPUT/PRIVATE INTERFACE</property>
           </widget>
           <packing>
             <property name="X">40</property>
@@ -473,11 +475,25 @@ ICMP</property>
         <child>
           <widget class="Gtk.Label" id="label4">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">OUTPUT INTERFACE</property>
+            <property name="LabelProp" translatable="yes">PUBLIC/OUTPUT INTERFACE</property>
           </widget>
           <packing>
             <property name="X">282</property>
             <property name="Y">478</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_NAT">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Add NAT rule</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnButtonNATClicked" />
+          </widget>
+          <packing>
+            <property name="X">61</property>
+            <property name="Y">574</property>
           </packing>
         </child>
       </widget>
