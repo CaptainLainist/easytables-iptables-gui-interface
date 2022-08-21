@@ -130,7 +130,7 @@ public partial class MainWindow : Gtk.Window
 
         string temp_sip;
 
-        if (checkbutton_sip.Active)
+        if (!sip.Equals(""))
         {
             temp_sip = "-s " + sip;
         }
@@ -147,7 +147,7 @@ public partial class MainWindow : Gtk.Window
 
         string temp_sport;
 
-        if (checkbutton_sport.Active)
+        if (!sport.Equals(""))
         {
             temp_sport = "--sport " + sport;
         }
@@ -164,7 +164,7 @@ public partial class MainWindow : Gtk.Window
 
         string temp_dip;
 
-        if (checkbutton_dip.Active)
+        if (!dip.Equals(""))
         {
             temp_dip = "-d " + dip;
         }
@@ -181,7 +181,7 @@ public partial class MainWindow : Gtk.Window
 
         string temp_dport;
 
-        if (checkbutton_dport.Active)
+        if (!dport.Equals(""))
         {
             temp_dport = "--dport " + dport;
         }
@@ -279,7 +279,7 @@ public partial class MainWindow : Gtk.Window
         string direction = comboboxentry_direction.ActiveText;
         string filter = comboboxentry_filter.ActiveText;
         string protocol = comboboxentry_protocol.ActiveText.ToLower();
-        string sip = text_sip.Text;
+        string sip = entry_sip.Text;
         string sport = entry_sport.Text;
         string dip = entry_dip.Text;
         string dport = entry_dport.Text;
@@ -389,4 +389,20 @@ public partial class MainWindow : Gtk.Window
 
 
     }
+
+    //port forwarding
+    protected void OnButtonPortForwardingClicked(object sender, EventArgs e)
+    {
+        if (comboboxentry_interfaces.ActiveText.Equals("none") || comboboxentry_protocol.ActiveText.Equals("ICMP") || entry_sport.Text.Equals("") || entry_dport.Text.Equals("") || entry_dip.Text.Equals("")) {
+            ShowMessage(this, "Alert Box", "Error: select input interface, source port, destination port, destination IP and tcp or udp as a protocol");
+        }
+        else
+        {
+
+            rules.Add("sudo iptables -t nat -A PREROUTING -i " + comboboxentry_interfaces.ActiveText + " -p " + comboboxentry_protocol.ActiveText.ToLower() + " -m " + comboboxentry_protocol.ActiveText.ToLower() + " --dport " + entry_sport.Text + " -j DNAT --to " + entry_dip.Text + ":" + entry_dport.Text);
+        }
+    }
 }
+
+
+//iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 11000 -j DNAT --to zz.zz.zz.zz:22

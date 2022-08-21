@@ -43,19 +43,11 @@ public partial class MainWindow
 
 	private global::Gtk.Button button_rules;
 
-	private global::Gtk.CheckButton checkbutton_sip;
-
-	private global::Gtk.Entry text_sip;
-
-	private global::Gtk.CheckButton checkbutton_dport;
+	private global::Gtk.Entry entry_sip;
 
 	private global::Gtk.Entry entry_dport;
 
-	private global::Gtk.CheckButton checkbutton_sport;
-
 	private global::Gtk.Entry entry_sport;
-
-	private global::Gtk.CheckButton checkbutton_dip;
 
 	private global::Gtk.Entry entry_dip;
 
@@ -80,6 +72,16 @@ public partial class MainWindow
 	private global::Gtk.Label label4;
 
 	private global::Gtk.Button button_NAT;
+
+	private global::Gtk.Button button_port_forwarding;
+
+	private global::Gtk.Label label5;
+
+	private global::Gtk.Label label6;
+
+	private global::Gtk.Label label7;
+
+	private global::Gtk.Label label8;
 
 	protected virtual void Build()
 	{
@@ -257,7 +259,6 @@ public partial class MainWindow
 		this.checkbutton_x11.CanFocus = true;
 		this.checkbutton_x11.Name = "checkbutton_x11";
 		this.checkbutton_x11.Label = global::Mono.Unix.Catalog.GetString("Allow X11");
-		this.checkbutton_x11.Active = true;
 		this.checkbutton_x11.DrawIndicator = true;
 		this.checkbutton_x11.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_x11);
@@ -275,37 +276,15 @@ public partial class MainWindow
 		w19.X = 543;
 		w19.Y = 577;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.checkbutton_sip = new global::Gtk.CheckButton();
-		this.checkbutton_sip.CanFocus = true;
-		this.checkbutton_sip.Name = "checkbutton_sip";
-		this.checkbutton_sip.Label = global::Mono.Unix.Catalog.GetString("source ip");
-		this.checkbutton_sip.DrawIndicator = true;
-		this.checkbutton_sip.UseUnderline = true;
-		this.fixed1.Add(this.checkbutton_sip);
-		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_sip]));
-		w20.X = 490;
-		w20.Y = 236;
-		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.text_sip = new global::Gtk.Entry();
-		this.text_sip.CanFocus = true;
-		this.text_sip.Name = "text_sip";
-		this.text_sip.IsEditable = true;
-		this.text_sip.InvisibleChar = '•';
-		this.fixed1.Add(this.text_sip);
-		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.text_sip]));
-		w21.X = 469;
-		w21.Y = 263;
-		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.checkbutton_dport = new global::Gtk.CheckButton();
-		this.checkbutton_dport.CanFocus = true;
-		this.checkbutton_dport.Name = "checkbutton_dport";
-		this.checkbutton_dport.Label = global::Mono.Unix.Catalog.GetString("destination port");
-		this.checkbutton_dport.DrawIndicator = true;
-		this.checkbutton_dport.UseUnderline = true;
-		this.fixed1.Add(this.checkbutton_dport);
-		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_dport]));
-		w22.X = 291;
-		w22.Y = 236;
+		this.entry_sip = new global::Gtk.Entry();
+		this.entry_sip.CanFocus = true;
+		this.entry_sip.Name = "entry_sip";
+		this.entry_sip.IsEditable = true;
+		this.entry_sip.InvisibleChar = '•';
+		this.fixed1.Add(this.entry_sip);
+		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_sip]));
+		w20.X = 469;
+		w20.Y = 263;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.entry_dport = new global::Gtk.Entry();
 		this.entry_dport.CanFocus = true;
@@ -313,20 +292,9 @@ public partial class MainWindow
 		this.entry_dport.IsEditable = true;
 		this.entry_dport.InvisibleChar = '•';
 		this.fixed1.Add(this.entry_dport);
-		global::Gtk.Fixed.FixedChild w23 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_dport]));
-		w23.X = 277;
-		w23.Y = 263;
-		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.checkbutton_sport = new global::Gtk.CheckButton();
-		this.checkbutton_sport.CanFocus = true;
-		this.checkbutton_sport.Name = "checkbutton_sport";
-		this.checkbutton_sport.Label = global::Mono.Unix.Catalog.GetString("source port");
-		this.checkbutton_sport.DrawIndicator = true;
-		this.checkbutton_sport.UseUnderline = true;
-		this.fixed1.Add(this.checkbutton_sport);
-		global::Gtk.Fixed.FixedChild w24 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_sport]));
-		w24.X = 291;
-		w24.Y = 298;
+		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_dport]));
+		w21.X = 277;
+		w21.Y = 263;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.entry_sport = new global::Gtk.Entry();
 		this.entry_sport.CanFocus = true;
@@ -334,20 +302,9 @@ public partial class MainWindow
 		this.entry_sport.IsEditable = true;
 		this.entry_sport.InvisibleChar = '•';
 		this.fixed1.Add(this.entry_sport);
-		global::Gtk.Fixed.FixedChild w25 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_sport]));
-		w25.X = 277;
-		w25.Y = 325;
-		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.checkbutton_dip = new global::Gtk.CheckButton();
-		this.checkbutton_dip.CanFocus = true;
-		this.checkbutton_dip.Name = "checkbutton_dip";
-		this.checkbutton_dip.Label = global::Mono.Unix.Catalog.GetString("destination ip");
-		this.checkbutton_dip.DrawIndicator = true;
-		this.checkbutton_dip.UseUnderline = true;
-		this.fixed1.Add(this.checkbutton_dip);
-		global::Gtk.Fixed.FixedChild w26 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_dip]));
-		w26.X = 490;
-		w26.Y = 298;
+		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_sport]));
+		w22.X = 277;
+		w22.Y = 325;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.entry_dip = new global::Gtk.Entry();
 		this.entry_dip.CanFocus = true;
@@ -355,9 +312,9 @@ public partial class MainWindow
 		this.entry_dip.IsEditable = true;
 		this.entry_dip.InvisibleChar = '•';
 		this.fixed1.Add(this.entry_dip);
-		global::Gtk.Fixed.FixedChild w27 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_dip]));
-		w27.X = 469;
-		w27.Y = 328;
+		global::Gtk.Fixed.FixedChild w23 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_dip]));
+		w23.X = 469;
+		w23.Y = 328;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.checkbutton_multiport = new global::Gtk.CheckButton();
 		this.checkbutton_multiport.CanFocus = true;
@@ -366,9 +323,9 @@ public partial class MainWindow
 		this.checkbutton_multiport.DrawIndicator = true;
 		this.checkbutton_multiport.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_multiport);
-		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_multiport]));
-		w28.X = 293;
-		w28.Y = 196;
+		global::Gtk.Fixed.FixedChild w24 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_multiport]));
+		w24.X = 293;
+		w24.Y = 196;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.checkbutton_NEW = new global::Gtk.CheckButton();
 		this.checkbutton_NEW.CanFocus = true;
@@ -377,9 +334,9 @@ public partial class MainWindow
 		this.checkbutton_NEW.DrawIndicator = true;
 		this.checkbutton_NEW.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_NEW);
-		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_NEW]));
-		w29.X = 37;
-		w29.Y = 373;
+		global::Gtk.Fixed.FixedChild w25 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_NEW]));
+		w25.X = 37;
+		w25.Y = 373;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.checkbutton_ESTABLISHED = new global::Gtk.CheckButton();
 		this.checkbutton_ESTABLISHED.CanFocus = true;
@@ -388,9 +345,9 @@ public partial class MainWindow
 		this.checkbutton_ESTABLISHED.DrawIndicator = true;
 		this.checkbutton_ESTABLISHED.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_ESTABLISHED);
-		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_ESTABLISHED]));
-		w30.X = 37;
-		w30.Y = 394;
+		global::Gtk.Fixed.FixedChild w26 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_ESTABLISHED]));
+		w26.X = 37;
+		w26.Y = 394;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.checkbutton_RELATED = new global::Gtk.CheckButton();
 		this.checkbutton_RELATED.CanFocus = true;
@@ -399,9 +356,9 @@ public partial class MainWindow
 		this.checkbutton_RELATED.DrawIndicator = true;
 		this.checkbutton_RELATED.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_RELATED);
-		global::Gtk.Fixed.FixedChild w31 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_RELATED]));
-		w31.X = 37;
-		w31.Y = 415;
+		global::Gtk.Fixed.FixedChild w27 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_RELATED]));
+		w27.X = 37;
+		w27.Y = 415;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.checkbutton_INVALID = new global::Gtk.CheckButton();
 		this.checkbutton_INVALID.CanFocus = true;
@@ -410,51 +367,51 @@ public partial class MainWindow
 		this.checkbutton_INVALID.DrawIndicator = true;
 		this.checkbutton_INVALID.UseUnderline = true;
 		this.fixed1.Add(this.checkbutton_INVALID);
-		global::Gtk.Fixed.FixedChild w32 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_INVALID]));
-		w32.X = 37;
-		w32.Y = 434;
+		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_INVALID]));
+		w28.X = 37;
+		w28.Y = 434;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.label_STATES = new global::Gtk.Label();
 		this.label_STATES.Name = "label_STATES";
 		this.label_STATES.LabelProp = global::Mono.Unix.Catalog.GetString("STATES");
 		this.fixed1.Add(this.label_STATES);
-		global::Gtk.Fixed.FixedChild w33 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label_STATES]));
-		w33.X = 38;
-		w33.Y = 351;
+		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label_STATES]));
+		w29.X = 38;
+		w29.Y = 351;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.comboboxentry_interfaces = global::Gtk.ComboBoxEntry.NewText();
 		this.comboboxentry_interfaces.AppendText(global::Mono.Unix.Catalog.GetString("none"));
 		this.comboboxentry_interfaces.Name = "comboboxentry_interfaces";
 		this.comboboxentry_interfaces.Active = 0;
 		this.fixed1.Add(this.comboboxentry_interfaces);
-		global::Gtk.Fixed.FixedChild w34 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interfaces]));
-		w34.X = 29;
-		w34.Y = 509;
+		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interfaces]));
+		w30.X = 29;
+		w30.Y = 509;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.comboboxentry_interface_output = global::Gtk.ComboBoxEntry.NewText();
 		this.comboboxentry_interface_output.AppendText(global::Mono.Unix.Catalog.GetString("none"));
 		this.comboboxentry_interface_output.Name = "comboboxentry_interface_output";
 		this.comboboxentry_interface_output.Active = 0;
 		this.fixed1.Add(this.comboboxentry_interface_output);
-		global::Gtk.Fixed.FixedChild w35 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interface_output]));
-		w35.X = 271;
-		w35.Y = 509;
+		global::Gtk.Fixed.FixedChild w31 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_interface_output]));
+		w31.X = 271;
+		w31.Y = 509;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.label1 = new global::Gtk.Label();
 		this.label1.Name = "label1";
 		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("INPUT/PRIVATE INTERFACE");
 		this.fixed1.Add(this.label1);
-		global::Gtk.Fixed.FixedChild w36 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label1]));
-		w36.X = 40;
-		w36.Y = 478;
+		global::Gtk.Fixed.FixedChild w32 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label1]));
+		w32.X = 40;
+		w32.Y = 478;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.label4 = new global::Gtk.Label();
 		this.label4.Name = "label4";
 		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("PUBLIC/OUTPUT INTERFACE");
 		this.fixed1.Add(this.label4);
-		global::Gtk.Fixed.FixedChild w37 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label4]));
-		w37.X = 282;
-		w37.Y = 478;
+		global::Gtk.Fixed.FixedChild w33 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label4]));
+		w33.X = 282;
+		w33.Y = 478;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.button_NAT = new global::Gtk.Button();
 		this.button_NAT.CanFocus = true;
@@ -462,20 +419,63 @@ public partial class MainWindow
 		this.button_NAT.UseUnderline = true;
 		this.button_NAT.Label = global::Mono.Unix.Catalog.GetString("Add NAT rule");
 		this.fixed1.Add(this.button_NAT);
-		global::Gtk.Fixed.FixedChild w38 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_NAT]));
-		w38.X = 61;
-		w38.Y = 574;
+		global::Gtk.Fixed.FixedChild w34 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_NAT]));
+		w34.X = 61;
+		w34.Y = 574;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.button_port_forwarding = new global::Gtk.Button();
+		this.button_port_forwarding.CanFocus = true;
+		this.button_port_forwarding.Name = "button_port_forwarding";
+		this.button_port_forwarding.UseUnderline = true;
+		this.button_port_forwarding.Label = global::Mono.Unix.Catalog.GetString("Add port forwarding rule");
+		this.fixed1.Add(this.button_port_forwarding);
+		global::Gtk.Fixed.FixedChild w35 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_port_forwarding]));
+		w35.X = 467;
+		w35.Y = 377;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label5 = new global::Gtk.Label();
+		this.label5.Name = "label5";
+		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString("destination port");
+		this.fixed1.Add(this.label5);
+		global::Gtk.Fixed.FixedChild w36 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label5]));
+		w36.X = 285;
+		w36.Y = 241;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label6 = new global::Gtk.Label();
+		this.label6.Name = "label6";
+		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("source port");
+		this.fixed1.Add(this.label6);
+		global::Gtk.Fixed.FixedChild w37 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label6]));
+		w37.X = 285;
+		w37.Y = 300;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label7 = new global::Gtk.Label();
+		this.label7.Name = "label7";
+		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("source ip");
+		this.fixed1.Add(this.label7);
+		global::Gtk.Fixed.FixedChild w38 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label7]));
+		w38.X = 481;
+		w38.Y = 241;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label8 = new global::Gtk.Label();
+		this.label8.Name = "label8";
+		this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("destination ip");
+		this.fixed1.Add(this.label8);
+		global::Gtk.Fixed.FixedChild w39 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label8]));
+		w39.X = 481;
+		w39.Y = 300;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 864;
+		this.DefaultWidth = 861;
 		this.DefaultHeight = 655;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.genbutton.Clicked += new global::System.EventHandler(this.OnGenbuttonClicked);
 		this.button_rules.Clicked += new global::System.EventHandler(this.OnButtonRulesClicked);
 		this.button_NAT.Clicked += new global::System.EventHandler(this.OnButtonNATClicked);
+		this.button_port_forwarding.Clicked += new global::System.EventHandler(this.OnButtonPortForwardingClicked);
 	}
 }

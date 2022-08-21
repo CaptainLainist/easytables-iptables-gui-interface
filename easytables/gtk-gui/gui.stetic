@@ -6,7 +6,7 @@
   <import>
     <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="864 655">
+  <widget class="Gtk.Window" id="MainWindow" design-size="861 655">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -230,7 +230,6 @@ ICMP</property>
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="Label" translatable="yes">Allow X11</property>
-            <property name="Active">True</property>
             <property name="DrawIndicator">True</property>
             <property name="HasLabel">True</property>
             <property name="UseUnderline">True</property>
@@ -255,21 +254,7 @@ ICMP</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_sip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">source ip</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">490</property>
-            <property name="Y">236</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="text_sip">
+          <widget class="Gtk.Entry" id="entry_sip">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
@@ -278,20 +263,6 @@ ICMP</property>
           <packing>
             <property name="X">469</property>
             <property name="Y">263</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_dport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">destination port</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">291</property>
-            <property name="Y">236</property>
           </packing>
         </child>
         <child>
@@ -307,20 +278,6 @@ ICMP</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_sport">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">source port</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">291</property>
-            <property name="Y">298</property>
-          </packing>
-        </child>
-        <child>
           <widget class="Gtk.Entry" id="entry_sport">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
@@ -330,20 +287,6 @@ ICMP</property>
           <packing>
             <property name="X">277</property>
             <property name="Y">325</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.CheckButton" id="checkbutton_dip">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Label" translatable="yes">destination ip</property>
-            <property name="DrawIndicator">True</property>
-            <property name="HasLabel">True</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">490</property>
-            <property name="Y">298</property>
           </packing>
         </child>
         <child>
@@ -494,6 +437,60 @@ ICMP</property>
           <packing>
             <property name="X">61</property>
             <property name="Y">574</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_port_forwarding">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Add port forwarding rule</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnButtonPortForwardingClicked" />
+          </widget>
+          <packing>
+            <property name="X">467</property>
+            <property name="Y">377</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label5">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">destination port</property>
+          </widget>
+          <packing>
+            <property name="X">285</property>
+            <property name="Y">241</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label6">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">source port</property>
+          </widget>
+          <packing>
+            <property name="X">285</property>
+            <property name="Y">300</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label7">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">source ip</property>
+          </widget>
+          <packing>
+            <property name="X">481</property>
+            <property name="Y">241</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label8">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">destination ip</property>
+          </widget>
+          <packing>
+            <property name="X">481</property>
+            <property name="Y">300</property>
           </packing>
         </child>
       </widget>
