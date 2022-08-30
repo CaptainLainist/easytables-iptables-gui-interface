@@ -142,6 +142,7 @@ public partial class MainWindow : Gtk.Window
         return temp_sip;
     }
 
+    //get source port
     private string getSourcePort(string sport)
     {
 
@@ -159,6 +160,7 @@ public partial class MainWindow : Gtk.Window
         return temp_sport;
     }
 
+    //get destination ip
     private string getDestinationIp(string dip)
     {
 
@@ -176,6 +178,7 @@ public partial class MainWindow : Gtk.Window
         return temp_dip;
     }
 
+    //get destoination port string
     private string getDestinationPort(string dport)
     {
 
@@ -194,6 +197,7 @@ public partial class MainWindow : Gtk.Window
     }
 
 
+    //get input interface string
     private string getInputInterface() {
 
         string cadena = "";
@@ -210,6 +214,7 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    //get output interface
     private string getOutputInterface()
     {
 
@@ -228,6 +233,7 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    //enable multiport
     private string getMultiport() {
 
         string temp_multiport = "";
@@ -239,6 +245,36 @@ public partial class MainWindow : Gtk.Window
         return temp_multiport;
     }
 
+
+    //get mac string
+    private string getMACstring() {
+
+        string macstring = "";
+
+        if (checkbutton_mac_not.Active) { 
+
+            if (!entry_mac.Text.Equals(""))
+            {
+                macstring = "-m mac ! --mac-source " + entry_mac.Text;
+
+            }
+
+        }
+        else
+        {
+
+            if (!entry_mac.Text.Equals(""))
+            {
+                macstring = "-m mac --mac-source " + entry_mac.Text;
+
+            }
+        }
+
+        return macstring;
+
+    }
+
+    //get states NEW INVALID ESTABLISHED RELATED
     private string getStates() {
         string temp_states = "";
 
@@ -294,6 +330,7 @@ public partial class MainWindow : Gtk.Window
         //string otras cosas
         string temp_multiport = getMultiport();
         string temp_states = getStates();
+        string mac = getMACstring();
 
         //string interfaces
         string input_interface = getInputInterface();
@@ -307,7 +344,7 @@ public partial class MainWindow : Gtk.Window
 
                 if (direction.Equals("INPUT"))
                 {
-                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + temp_sip + " -j " + filter);
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + mac + " " + temp_sip + " -j " + filter);
                 }
                 else if (direction.Equals("OUTPUT"))
                 {
@@ -315,7 +352,7 @@ public partial class MainWindow : Gtk.Window
                 }
                 else
                 {
-                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + temp_dip + " " + temp_sip + " -j " + filter);
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + mac + " " + temp_dip + " " + temp_sip + " -j " + filter);
                 }
 
             }
@@ -323,7 +360,7 @@ public partial class MainWindow : Gtk.Window
             {
                 if (direction.Equals("INPUT"))
                 {
-                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + temp_multiport + " " + temp_sip + " " + mac + " " + temp_dport + " -j " + filter);
                 }
                 else if (direction.Equals("OUTPUT"))
                 {
@@ -331,7 +368,7 @@ public partial class MainWindow : Gtk.Window
                 }
                 else
                 {
-                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
+                    rules.Add("sudo iptables -A " + direction + " " + temp_states + " -p " + protocol + " " + input_interface + " " + output_interface + " " + temp_multiport + " " + mac + " " + temp_dip + " " + temp_sport + " " + temp_sip + " " + temp_dport + " -j " + filter);
                 }
             }
 

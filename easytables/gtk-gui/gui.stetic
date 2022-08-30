@@ -6,7 +6,7 @@
   <import>
     <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="861 655">
+  <widget class="Gtk.Window" id="MainWindow" design-size="961 655">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -491,6 +491,42 @@ ICMP</property>
           <packing>
             <property name="X">481</property>
             <property name="Y">300</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.CheckButton" id="checkbutton_mac_not">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Label" translatable="yes">negate</property>
+            <property name="DrawIndicator">True</property>
+            <property name="HasLabel">True</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">672</property>
+            <property name="Y">265</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry_mac">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">674</property>
+            <property name="Y">296</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label9">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">MAC SOURCE</property>
+          </widget>
+          <packing>
+            <property name="X">685</property>
+            <property name="Y">240</property>
           </packing>
         </child>
       </widget>

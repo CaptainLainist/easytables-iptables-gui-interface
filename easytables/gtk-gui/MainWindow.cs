@@ -83,6 +83,12 @@ public partial class MainWindow
 
 	private global::Gtk.Label label8;
 
+	private global::Gtk.CheckButton checkbutton_mac_not;
+
+	private global::Gtk.Entry entry_mac;
+
+	private global::Gtk.Label label9;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -464,12 +470,41 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w39 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label8]));
 		w39.X = 481;
 		w39.Y = 300;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.checkbutton_mac_not = new global::Gtk.CheckButton();
+		this.checkbutton_mac_not.CanFocus = true;
+		this.checkbutton_mac_not.Name = "checkbutton_mac_not";
+		this.checkbutton_mac_not.Label = global::Mono.Unix.Catalog.GetString("negate");
+		this.checkbutton_mac_not.DrawIndicator = true;
+		this.checkbutton_mac_not.UseUnderline = true;
+		this.fixed1.Add(this.checkbutton_mac_not);
+		global::Gtk.Fixed.FixedChild w40 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.checkbutton_mac_not]));
+		w40.X = 672;
+		w40.Y = 265;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.entry_mac = new global::Gtk.Entry();
+		this.entry_mac.CanFocus = true;
+		this.entry_mac.Name = "entry_mac";
+		this.entry_mac.IsEditable = true;
+		this.entry_mac.InvisibleChar = '•';
+		this.fixed1.Add(this.entry_mac);
+		global::Gtk.Fixed.FixedChild w41 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_mac]));
+		w41.X = 674;
+		w41.Y = 296;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label9 = new global::Gtk.Label();
+		this.label9.Name = "label9";
+		this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("MAC SOURCE");
+		this.fixed1.Add(this.label9);
+		global::Gtk.Fixed.FixedChild w42 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label9]));
+		w42.X = 685;
+		w42.Y = 240;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 861;
+		this.DefaultWidth = 961;
 		this.DefaultHeight = 655;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
