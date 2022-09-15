@@ -1,4 +1,4 @@
-# Easytables
+# Easytables (Beta, Under construction)
 
 Easytables is an graphical interface for creating iptables bash files in an easy way
 
