@@ -31,6 +31,7 @@ public partial class MainWindow : Gtk.Window
         Build();
 
         rules = new List<string>();
+        
 
         //asignar fuente de titulo al titulo
         var font_title = Font("Verdana", 24);
@@ -375,6 +376,20 @@ public partial class MainWindow : Gtk.Window
             ShowMessage(this, "Alert Box", "Rule Added");
 
 
+        ViewRules();
+
+    }
+
+    //add rules to textview
+    void ViewRules() {
+
+        textview_rules.Buffer.Text = "";
+        int counter = 0;
+        foreach (string rule in rules)
+        {
+            counter++;
+            textview_rules.Buffer.Text += counter.ToString() + ": " + rule + Environment.NewLine;
+        }
     }
 
     //al anyadir NAT
@@ -414,7 +429,6 @@ public partial class MainWindow : Gtk.Window
             rules.Add("sudo iptables -t nat --delete-chain");
             rules.Add("sudo iptables --table nat --append POSTROUTING --out-interface " + public_interface + " -j MASQUERADE");
             rules.Add("sudo iptables --append FORWARD --in-interface " + private_interface + " -j ACCEPT");
-            rules.Add("sudo echo 1 > /proc/sys/net/ipv4/ip_forward");
 
             ShowMessage(this, "Alert Box", "NAT rule added");
         } else {
@@ -423,7 +437,7 @@ public partial class MainWindow : Gtk.Window
         
         }
 
-
+        ViewRules();
 
     }
 
@@ -437,6 +451,52 @@ public partial class MainWindow : Gtk.Window
         {
 
             rules.Add("sudo iptables -t nat -A PREROUTING -i " + comboboxentry_interfaces.ActiveText + " -p " + comboboxentry_protocol.ActiveText.ToLower() + " -m " + comboboxentry_protocol.ActiveText.ToLower() + " --dport " + entry_sport.Text + " -j DNAT --to " + entry_dip.Text + ":" + entry_dport.Text);
+            ShowMessage(this, "Alert Box", "PortForwarding Rule Added");
+        }
+
+        ViewRules();
+    }
+
+    //Borrar reglas
+    protected void RemoveAllRulesBtn(object sender, EventArgs e)
+    {
+        rules = new List<string>();
+        ViewRules();
+        ShowMessage(this, "Alert Box", "All Rules Removed");
+
+    }
+
+    //Remove last rule
+    protected void RemoveLastRuleBtn(object sender, EventArgs e)
+    {
+        //if rules have something then delete
+        if (rules.Count > 0)
+        {
+            rules.RemoveAt(rules.Count - 1);
+            ViewRules();
+            ShowMessage(this, "Alert Box", "Last Rule Removed");
+        } else {
+            ShowMessage(this, "Alert Box", "No More Rules to Remove");
+        }
+    }
+
+    //remove rule number
+    protected void RemoveRuleNUmberBtn(object sender, EventArgs e)
+    {
+        int number;
+
+        bool isNumber = int.TryParse(entry_number_rule.Text, out number);
+
+        if (isNumber) { 
+            if (number > 0 && number <= rules.Count) {
+                rules.RemoveAt(number - 1);
+                ShowMessage(this, "Alert Box", "Rule Removed");
+                ViewRules();
+            } else {
+                ShowMessage(this, "Alert Box", "Error: Put a valid number in range");
+            }
+        } else {
+            ShowMessage(this, "Alert Box", "Error: Put a valid number, not text");
         }
     }
 }

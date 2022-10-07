@@ -4,9 +4,10 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="961 655">
+  <widget class="Gtk.Window" id="MainWindow" design-size="1281 1987">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -527,6 +528,97 @@ ICMP</property>
           <packing>
             <property name="X">685</property>
             <property name="Y">240</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder />
+        </child>
+        <child>
+          <placeholder />
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="WidthRequest">250</property>
+            <property name="HeightRequest">200</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TextView" id="textview_rules">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <property name="Editable">False</property>
+                <property name="Text" translatable="yes" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">926</property>
+            <property name="Y">228</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label10">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">VIEW RULES</property>
+          </widget>
+          <packing>
+            <property name="X">927</property>
+            <property name="Y">185</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_remove_rules">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Remove rules</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="RemoveAllRulesBtn" />
+          </widget>
+          <packing>
+            <property name="X">430</property>
+            <property name="Y">577</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_remove_last">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Remove Last Rule</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="RemoveLastRuleBtn" />
+          </widget>
+          <packing>
+            <property name="X">930</property>
+            <property name="Y">442</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button_remove_rule_number">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Remove Rule Number: </property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="RemoveRuleNUmberBtn" />
+          </widget>
+          <packing>
+            <property name="X">930</property>
+            <property name="Y">481</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry_number_rule">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">1090</property>
+            <property name="Y">481</property>
           </packing>
         </child>
       </widget>

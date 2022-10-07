@@ -89,6 +89,20 @@ public partial class MainWindow
 
 	private global::Gtk.Label label9;
 
+	private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
+	private global::Gtk.TextView textview_rules;
+
+	private global::Gtk.Label label10;
+
+	private global::Gtk.Button button_remove_rules;
+
+	private global::Gtk.Button button_remove_last;
+
+	private global::Gtk.Button button_remove_rule_number;
+
+	private global::Gtk.Entry entry_number_rule;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -499,18 +513,85 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w42 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label9]));
 		w42.X = 685;
 		w42.Y = 240;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+		this.GtkScrolledWindow.WidthRequest = 250;
+		this.GtkScrolledWindow.HeightRequest = 200;
+		this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+		this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+		// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+		this.textview_rules = new global::Gtk.TextView();
+		this.textview_rules.CanFocus = true;
+		this.textview_rules.Name = "textview_rules";
+		this.textview_rules.Editable = false;
+		this.GtkScrolledWindow.Add(this.textview_rules);
+		this.fixed1.Add(this.GtkScrolledWindow);
+		global::Gtk.Fixed.FixedChild w44 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.GtkScrolledWindow]));
+		w44.X = 926;
+		w44.Y = 228;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.label10 = new global::Gtk.Label();
+		this.label10.Name = "label10";
+		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("VIEW RULES");
+		this.fixed1.Add(this.label10);
+		global::Gtk.Fixed.FixedChild w45 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label10]));
+		w45.X = 927;
+		w45.Y = 185;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.button_remove_rules = new global::Gtk.Button();
+		this.button_remove_rules.CanFocus = true;
+		this.button_remove_rules.Name = "button_remove_rules";
+		this.button_remove_rules.UseUnderline = true;
+		this.button_remove_rules.Label = global::Mono.Unix.Catalog.GetString("Remove rules");
+		this.fixed1.Add(this.button_remove_rules);
+		global::Gtk.Fixed.FixedChild w46 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_remove_rules]));
+		w46.X = 430;
+		w46.Y = 577;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.button_remove_last = new global::Gtk.Button();
+		this.button_remove_last.CanFocus = true;
+		this.button_remove_last.Name = "button_remove_last";
+		this.button_remove_last.UseUnderline = true;
+		this.button_remove_last.Label = global::Mono.Unix.Catalog.GetString("Remove Last Rule");
+		this.fixed1.Add(this.button_remove_last);
+		global::Gtk.Fixed.FixedChild w47 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_remove_last]));
+		w47.X = 930;
+		w47.Y = 442;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.button_remove_rule_number = new global::Gtk.Button();
+		this.button_remove_rule_number.CanFocus = true;
+		this.button_remove_rule_number.Name = "button_remove_rule_number";
+		this.button_remove_rule_number.UseUnderline = true;
+		this.button_remove_rule_number.Label = global::Mono.Unix.Catalog.GetString("Remove Rule Number: ");
+		this.fixed1.Add(this.button_remove_rule_number);
+		global::Gtk.Fixed.FixedChild w48 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.button_remove_rule_number]));
+		w48.X = 930;
+		w48.Y = 481;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.entry_number_rule = new global::Gtk.Entry();
+		this.entry_number_rule.CanFocus = true;
+		this.entry_number_rule.Name = "entry_number_rule";
+		this.entry_number_rule.IsEditable = true;
+		this.entry_number_rule.InvisibleChar = '•';
+		this.fixed1.Add(this.entry_number_rule);
+		global::Gtk.Fixed.FixedChild w49 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_number_rule]));
+		w49.X = 1090;
+		w49.Y = 481;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 961;
-		this.DefaultHeight = 655;
+		this.DefaultWidth = 1281;
+		this.DefaultHeight = 1987;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.genbutton.Clicked += new global::System.EventHandler(this.OnGenbuttonClicked);
 		this.button_rules.Clicked += new global::System.EventHandler(this.OnButtonRulesClicked);
 		this.button_NAT.Clicked += new global::System.EventHandler(this.OnButtonNATClicked);
 		this.button_port_forwarding.Clicked += new global::System.EventHandler(this.OnButtonPortForwardingClicked);
+		this.button_remove_rules.Clicked += new global::System.EventHandler(this.RemoveAllRulesBtn);
+		this.button_remove_last.Clicked += new global::System.EventHandler(this.RemoveLastRuleBtn);
+		this.button_remove_rule_number.Clicked += new global::System.EventHandler(this.RemoveRuleNUmberBtn);
 	}
 }

@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{1225F0FE-C23D-4220-A955-984811B7A719}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="easytables/MainWindow.cs">
     <Files>
-      <File FileName="easytables/MainWindow.cs" Line="326" Column="50" />
+      <File FileName="easytables/MainWindow.cs" Line="439" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
