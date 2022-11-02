@@ -101,7 +101,7 @@ public partial class MainWindow
 
 	private global::Gtk.Button button_remove_rule_number;
 
-	private global::Gtk.Entry entry_number_rule;
+	private global::Gtk.ComboBoxEntry comboboxentry_nums;
 
 	protected virtual void Build()
 	{
@@ -112,7 +112,6 @@ public partial class MainWindow
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.fixed1 = new global::Gtk.Fixed();
-		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.titlelbl = new global::Gtk.Label();
@@ -568,21 +567,18 @@ public partial class MainWindow
 		w48.X = 930;
 		w48.Y = 481;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.entry_number_rule = new global::Gtk.Entry();
-		this.entry_number_rule.CanFocus = true;
-		this.entry_number_rule.Name = "entry_number_rule";
-		this.entry_number_rule.IsEditable = true;
-		this.entry_number_rule.InvisibleChar = '•';
-		this.fixed1.Add(this.entry_number_rule);
-		global::Gtk.Fixed.FixedChild w49 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry_number_rule]));
-		w49.X = 1090;
+		this.comboboxentry_nums = global::Gtk.ComboBoxEntry.NewText();
+		this.comboboxentry_nums.Name = "comboboxentry_nums";
+		this.fixed1.Add(this.comboboxentry_nums);
+		global::Gtk.Fixed.FixedChild w49 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.comboboxentry_nums]));
+		w49.X = 1089;
 		w49.Y = 481;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 1281;
+		this.DefaultWidth = 1296;
 		this.DefaultHeight = 1987;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);

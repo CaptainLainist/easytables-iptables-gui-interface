@@ -5,9 +5,9 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Debug/easytables.exe" internal="true" />
+    <widget-library name="../bin/Release/easytables.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="1281 1987">
+  <widget class="Gtk.Window" id="MainWindow" design-size="1296 1987">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -610,14 +610,19 @@ ICMP</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Entry" id="entry_number_rule">
+          <placeholder />
+        </child>
+        <child>
+          <placeholder />
+        </child>
+        <child>
+          <widget class="Gtk.ComboBoxEntry" id="comboboxentry_nums">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes" />
           </widget>
           <packing>
-            <property name="X">1090</property>
+            <property name="X">1089</property>
             <property name="Y">481</property>
           </packing>
         </child>

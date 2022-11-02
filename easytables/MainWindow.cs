@@ -275,6 +275,7 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+
     //get states NEW INVALID ESTABLISHED RELATED
     private string getStates() {
         string temp_states = "";
@@ -380,15 +381,30 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    //clear combobox entry nums (.Clear gives me errors)
+    private void removetext_cben() {
+
+      
+
+        for (int i = 0; i <= rules.Count; i++)
+        {
+        
+            comboboxentry_nums.RemoveText(0);
+          
+        }
+    }
+
     //add rules to textview
-    void ViewRules() {
+    private void ViewRules() {
 
         textview_rules.Buffer.Text = "";
+        removetext_cben();
         int counter = 0;
         foreach (string rule in rules)
         {
             counter++;
             textview_rules.Buffer.Text += counter.ToString() + ": " + rule + Environment.NewLine;
+            comboboxentry_nums.AppendText(counter.ToString() + ": " + rule + Environment.NewLine);
         }
     }
 
@@ -460,6 +476,7 @@ public partial class MainWindow : Gtk.Window
     //Borrar reglas
     protected void RemoveAllRulesBtn(object sender, EventArgs e)
     {
+        removetext_cben();
         rules = new List<string>();
         ViewRules();
         ShowMessage(this, "Alert Box", "All Rules Removed");
@@ -483,21 +500,16 @@ public partial class MainWindow : Gtk.Window
     //remove rule number
     protected void RemoveRuleNUmberBtn(object sender, EventArgs e)
     {
-        int number;
 
-        bool isNumber = int.TryParse(entry_number_rule.Text, out number);
+        try {
+            rules.RemoveAt(comboboxentry_nums.Active);
+            ShowMessage(this, "Alert Box", "Rule Removed");
+            ViewRules();
+        } catch (ArgumentOutOfRangeException) { ShowMessage(this, "Alert Box", "Select a Valid Entry"); }
 
-        if (isNumber) { 
-            if (number > 0 && number <= rules.Count) {
-                rules.RemoveAt(number - 1);
-                ShowMessage(this, "Alert Box", "Rule Removed");
-                ViewRules();
-            } else {
-                ShowMessage(this, "Alert Box", "Error: Put a valid number in range");
-            }
-        } else {
-            ShowMessage(this, "Alert Box", "Error: Put a valid number, not text");
-        }
+
+
+
     }
 }
 
