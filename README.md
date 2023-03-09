@@ -12,7 +12,7 @@ Easytables is an graphical interface for creating iptables bash files in an easy
 ## Tested on
 
  - linux mint
- - fedora
+ - fedora (the text sometimes becomes invisible but works)
  - opensuse
 
 ## Installation (with compatible packet managers)
