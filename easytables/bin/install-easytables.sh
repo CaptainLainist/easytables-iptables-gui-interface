@@ -28,9 +28,9 @@ easytables
 if [ $? -ne 0 ]; then
 	echo "[+] Error found, linking mono to easytables"
 	if [ "$SHELL" = "/bin/bash" ]; then
-		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname)/.bashrc
+		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.bashrc
 	elif [ "$SHELL" = "/bin/zsh" ]; then
-		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname)/.zshrc
+		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.zshrc
 	fi
 	echo "[+] Restart the shell and test easytables"
 fi
