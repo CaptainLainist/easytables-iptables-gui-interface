@@ -8,15 +8,15 @@ sudo zypper &>/dev/null && echo "[+] zypper detected " && SELECTOR_PM="zypper"
 
 echo "[+] Installing dependencies"
 if [ "$SELECTOR_PM" = "apt" ]; then
-	sudo apt update && sudo apt install mono-runtime gtk-sharp2 x11-apps -y	
+    sudo apt update && sudo apt install mono-runtime gtk-sharp2 x11-apps -y 
 elif [ "$SELECTOR_PM" = "dnf-yum" ]; then
-	sudo dnf install mono-complete gtk-sharp2 -y
-	sudo yum install xorg-x11-apps -y
+    sudo dnf install mono-complete gtk-sharp2 -y
+    sudo yum install xorg-x11-apps -y
 elif [ "$SELECTOR_PM" = "zypper" ]; then
-	sudo zypper -n in mono-complete gtk-sharp2 x11-tools
+    sudo zypper -n in mono-complete gtk-sharp2 x11-tools
 else
-	echo "[+] Compatible packet manager not found"
-	echo "[+] Please install mono-runtime gtk-sharp2 (and x11-apps for x11 forwarding)"
+    echo "[+] Compatible packet manager not found"
+    echo "[+] Please install mono-runtime gtk-sharp2 (and x11-apps for x11 forwarding)"
 fi
 echo "[+] Moving easytables to path"
 sudo cp easytables.exe /bin/easytables
@@ -26,11 +26,11 @@ echo "[+] Done"
 echo "[+] Testing"
 easytables
 if [ $? -ne 0 ]; then
-	echo "[+] Error found, linking mono to easytables"
-	if [ "$SHELL" = "/bin/bash" ]; then
-		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.bashrc
-	elif [ "$SHELL" = "/bin/zsh" ]; then
-		echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.zshrc
-	fi
-	echo "[+] Restart the shell and test easytables"
+    echo "[+] Error found, linking mono to easytables to fix it"
+    if grep -q "bash" <<< "$SHELL"; then
+            echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.bashrc
+    elif grep -q "zsh" <<< "$SHELL"; then
+            echo 'alias easytables="mono /bin/easytables"' >> /home/$(logname 2>/dev/null || echo ${SUDO_USER:-${USER}})/.zshrc
+    fi
+    echo "[+] Error fixed, restart your shell and try easytables"
 fi
