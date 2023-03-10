@@ -36,6 +36,9 @@ sudo chmod u+x easytables.exe
 sudo cp easytables.exe /bin/easytables
 sudo chown user /bin/easytables
 easytables
+
+#if there's some error about corrupt binary try this
+mono /bin/easytables
 ```
 remember changing user by your local user.
 
