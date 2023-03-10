@@ -29,7 +29,7 @@ easytables
 
 Install mono-runtime and gtk-sharp2 with your packet manager
 and then execute
-also install x11-apps for enabling x11 forwarding
+
 
 ```bash
 sudo chmod u+x easytables.exe
@@ -37,4 +37,6 @@ sudo cp easytables.exe /bin/easytables
 sudo chown user /bin/easytables
 easytables
 ```
-remember changing user by your local user
+remember changing user by your local user.
+
+Also install x11-apps for enabling x11 forwarding
