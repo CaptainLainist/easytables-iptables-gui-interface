@@ -9,6 +9,15 @@ Easytables is an graphical interface for creating iptables bash files in an easy
  - apt
  - dnf and yum (needs both)
  - zypper
+
+## if the error "[+] Error found, linking mono to easytables to fix it" is found
+it will fix itself only on
+
+ - bash
+ - zsh
+
+if you use a different shell please write 'mono /bin/easytables' to execute it or add an alias in your .whateverrc
+
 ## Tested on
 
  - linux mint
