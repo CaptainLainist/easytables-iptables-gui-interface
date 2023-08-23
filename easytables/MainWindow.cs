@@ -24,7 +24,24 @@ public partial class MainWindow : Gtk.Window
         return F;
     }
 
+    //sanitize input for evading buffer overflows or shell injections
+    public void sanitize(object o) {
+        Entry oe = (Entry)o;
+        
+        //buff
+        if (oe.Text.Length > 40) {
+            ShowMessage(this, "Error", "Too much characters");
+            oe.Text = oe.Text.Substring(0, 40);
+        }
 
+        //sh in
+        foreach (char i in "$(){}[] -/%&|;") { 
+            if (oe.Text.Contains(i.ToString())) {
+                ShowMessage(this, "Error", "Evil characters detected");
+                oe.Text = oe.Text.Replace(i.ToString(), "");
+            }
+        }
+    }
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -510,6 +527,57 @@ public partial class MainWindow : Gtk.Window
 
 
 
+    }
+
+    //sanitize input
+    protected void OnEntryDportTextInserted(object o, TextInsertedArgs args)
+    {
+        sanitize(o);
+    }
+
+    protected void OnEntryDportClipboardPasted(object sender, EventArgs e)
+    {
+        sanitize(sender);
+    }
+
+    protected void OnEntrySportClipboardPasted(object sender, EventArgs e)
+    {
+        sanitize(sender);
+    }
+
+    protected void OnEntrySportTextInserted(object o, TextInsertedArgs args)
+    {
+        sanitize(o);
+    }
+
+    protected void OnEntrySipClipboardPasted(object sender, EventArgs e)
+    {
+        sanitize(sender);
+    }
+
+    protected void OnEntrySipTextInserted(object o, TextInsertedArgs args)
+    {
+        sanitize(o);
+    }
+
+    protected void OnEntryDipClipboardPasted(object sender, EventArgs e)
+    {
+        sanitize(sender);
+    }
+
+    protected void OnEntryDipTextInserted(object o, TextInsertedArgs args)
+    {
+        sanitize(o);
+    }
+
+    protected void OnEntryMacClipboardPasted(object sender, EventArgs e)
+    {
+        sanitize(sender);
+    }
+
+    protected void OnEntryMacTextInserted(object o, TextInsertedArgs args)
+    {
+        sanitize(o);
     }
 }
 

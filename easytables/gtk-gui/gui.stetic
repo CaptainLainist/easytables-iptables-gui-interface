@@ -4,7 +4,6 @@
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/easytables.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="1296 1987">
@@ -260,6 +259,8 @@ ICMP</property>
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="ClipboardPasted" handler="OnEntrySipClipboardPasted" />
+            <signal name="TextInserted" handler="OnEntrySipTextInserted" />
           </widget>
           <packing>
             <property name="X">469</property>
@@ -272,6 +273,8 @@ ICMP</property>
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="TextInserted" handler="OnEntryDportTextInserted" />
+            <signal name="ClipboardPasted" handler="OnEntryDportClipboardPasted" />
           </widget>
           <packing>
             <property name="X">277</property>
@@ -284,6 +287,8 @@ ICMP</property>
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="ClipboardPasted" handler="OnEntrySportClipboardPasted" />
+            <signal name="TextInserted" handler="OnEntrySportTextInserted" />
           </widget>
           <packing>
             <property name="X">277</property>
@@ -296,6 +301,8 @@ ICMP</property>
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="ClipboardPasted" handler="OnEntryDipClipboardPasted" />
+            <signal name="TextInserted" handler="OnEntryDipTextInserted" />
           </widget>
           <packing>
             <property name="X">469</property>
@@ -514,6 +521,8 @@ ICMP</property>
             <property name="CanFocus">True</property>
             <property name="IsEditable">True</property>
             <property name="InvisibleChar">•</property>
+            <signal name="ClipboardPasted" handler="OnEntryMacClipboardPasted" />
+            <signal name="TextInserted" handler="OnEntryMacTextInserted" />
           </widget>
           <packing>
             <property name="X">674</property>

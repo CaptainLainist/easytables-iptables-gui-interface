@@ -6,3 +6,7 @@
 /DATOS/easytables_gh/easytables/easytables/obj/x86/Release/easytables.csproj.AssemblyReference.cache
 /DATOS/easytables_gh/easytables/easytables/obj/x86/Release/easytables.csproj.CoreCompileInputs.cache
 /DATOS/easytables_gh/easytables/easytables/obj/x86/Release/easytables.exe
+/DATOS/easytables_gh/prueba_2/easytables-iptables-gui-interface/easytables/bin/Release/easytables.exe
+/DATOS/easytables_gh/prueba_2/easytables-iptables-gui-interface/easytables/obj/x86/Release/easytables.csproj.AssemblyReference.cache
+/DATOS/easytables_gh/prueba_2/easytables-iptables-gui-interface/easytables/obj/x86/Release/easytables.csproj.CoreCompileInputs.cache
+/DATOS/easytables_gh/prueba_2/easytables-iptables-gui-interface/easytables/obj/x86/Release/easytables.exe
